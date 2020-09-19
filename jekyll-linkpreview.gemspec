@@ -13,13 +13,14 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/ysk24ok/jekyll-linkpreview"
   spec.license       = "MIT"
 
-  spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
+  spec.files         = Dir.chdir(File.expand_path("..", __FILE__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
   spec.require_paths = ["lib"]
 
   spec.add_dependency "jekyll", ">= 3.5", "< 5.0"
   spec.add_dependency "metainspector", "~> 5.9"
+  spec.add_dependency "mini_magick", "~> 4.5", ">= 4.5.1"
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 12.3.3"
   spec.add_development_dependency "rspec", "~> 3.0"

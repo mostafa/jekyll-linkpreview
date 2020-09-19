@@ -75,8 +75,7 @@ module Jekyll
         page = fetch(url)
         og_properties = page.meta_tags['property']
         og_url = get_og_property(og_properties, 'og:url')
-        og_image_url = get_og_property(og_properties, 'og:image')
-        image_url = Resize::resize(image_url, "100x100>")
+        image_url = get_og_property(og_properties, 'og:image')
         {
           'title'       => get_og_property(og_properties, 'og:title'),
           'url'         => og_url,
@@ -173,6 +172,7 @@ module Jekyll
           properties = @nog_properties.get(url)
         else
           properties = @og_properties.get(url)
+          properties["image_url"] = Resize::resize(image_url, "100x100>")
         end
         if Dir.exists?(@@cache_dir) then
           save_cache_file(cache_filepath, properties)
